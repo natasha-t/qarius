@@ -1,0 +1,25 @@
+{
+  "name": "qarius",
+  "version": "1.0.0",
+  "description": "Filters users' tumblr likes by content type",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "tumblr.js": "^0.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natasha-t/qarius.git"
+  },
+  "author": "natasha-t",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/natasha-t/qarius/issues"
+  },
+  "homepage": "https://github.com/natasha-t/qarius#readme"
+}
