@@ -4,6 +4,8 @@
   "description": "Filters users' tumblr likes by content type",
   "main": "index.js",
   "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
     "tumblr.js": "^0.0.7"
   },
   "devDependencies": {},
