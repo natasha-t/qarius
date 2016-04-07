@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+  <title></title>
+</head>
+
+
+<body>
+
+  <h2> Likes </h2>
+
+  <h3><a href='/likes/photos'> Photos </a></h3>
+
+  <% posts.forEach(function(post){ %>
+      <ul>
+        <li><%= post.blog_name %></li>
+        <li><%= post.type %></li>
+      </ul>
+   <% }); %>
+
+
+
+</body>
+</html>
