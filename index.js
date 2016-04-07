@@ -22,25 +22,31 @@ app.get('/', function(request, response) {
 });
 
 app.get('/likes', function(request, response){
+  response.render('pages/likes/likes');
+});
+
+app.get('/likes/photos', function(request, response){
   client.blogLikes('trubutstill', function(err, data){
     var jsonString = JSON.stringify(data);
     var obj = JSON.parse(jsonString);
     var allPosts = obj.liked_posts;
 
     var photoPosts = [];
-    var photoPost = {};
-   for(var i = 0; i < allPosts.length; i++){
+    for(var i = 0; i < allPosts.length; i++){
       if(allPosts[i]['type'] === 'photo'){
+        var photoPost = {};
         photoPost['blogName'] = allPosts[i].blog_name;
         photoPost['photoUrl'] = allPosts[i].photos[0].alt_sizes[1].url;
       }
       photoPosts.push(photoPost);
-   }
+    }
 
     console.log(photoPosts);
 
-    response.render('pages/likes', {posts: photoPosts});
+    response.render('pages/likes/photos', {posts: photoPosts});
   });
+
+
 });
 
 app.listen(app.get('port'), function() {
