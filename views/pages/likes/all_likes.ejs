@@ -8,6 +8,12 @@
 
   <h2> Likes </h2>
 
+  <% posts.forEach(function(post){ %>
+      <ul>
+        <li><%= post.blog_name %></li>
+        <li><%= post.type %></li>
+      </ul>
+   <% }); %>
 
 
 

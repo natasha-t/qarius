@@ -22,7 +22,14 @@ app.get('/', function(request, response) {
 });
 
 app.get('/likes', function(request, response){
-  response.render('pages/likes/likes');
+  client.blogLikes('trubutstill', function(err, data){
+    var jsonString = JSON.stringify(data);
+    var obj = JSON.parse(jsonString);
+    var allPosts = obj.liked_posts;
+
+    response.render('pages/likes/all_likes', {posts: allPosts});
+
+  })
 });
 
 app.get('/likes/photos', function(request, response){
