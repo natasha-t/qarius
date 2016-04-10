@@ -30,8 +30,6 @@ app.get('/likes', function(request, response){
     var obj = JSON.parse(jsonString);
     var allPosts = obj.liked_posts;
 
-
-
     response.render('pages/likes/all_likes', {posts: allPosts});
 
   })
@@ -77,9 +75,38 @@ app.get('/likes/text', function(request, response){
     };
 
     // console.log(textPosts);
+    if(request.xhr){
+      response.send(textPosts);
+    } else {
+      response.render('pages/likes/text', {posts: textPosts});
+    }
 
-    response.render('pages/likes/text', {posts: textPosts});
+  });
+});
 
+app.get('/likes/quotes', function(request, response){
+  client.blogLikes('trubutstill', function(err, data){
+    var jsonString = JSON.stringify(data);
+    var obj = JSON.parse(jsonString);
+    var allPosts = obj.liked_posts;
+
+
+
+    var quotePosts = [];
+    for(var i = 0; i < allPosts.length; i++){
+      if(allPosts[i]['type'] === 'quote'){
+        var quotePost = {};
+        quotePost['blogName'] = allPosts[i].blog_name;
+        quotePost['source'] = allPosts[i].source;
+        quotePost['text'] = allPosts[i].text;
+
+        quotePosts.push(quotePost);
+      }
+    };
+
+    console.log(quotePosts);
+
+    response.render('pages/likes/quotes', {posts: quotePosts})
   });
 });
 

@@ -64,11 +64,16 @@ var myQuery = (function(){
 })();
 
 
-// $(function(){
+$(function(){
 
-//  $.ajax({
-//   type: 'GET',
-//   url:
-//  })
+ $.ajax({
+  type: 'GET',
+  url: '/likes/text'
+ }).done(function(response){
+    var text = response[0].text;
+    var html = $.parseHTML(text);
+    console.log(text);
+    $('#post-text').append(html);
+ })
 
-// });
+});
