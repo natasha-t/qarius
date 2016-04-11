@@ -66,14 +66,19 @@ var myQuery = (function(){
 
 $(function(){
 
- $.ajax({
-  type: 'GET',
-  url: '/likes/text'
- }).done(function(response){
-    var text = response[0].text;
-    var html = $.parseHTML(text);
-    console.log(text);
-    $('#post-text').append(html);
- })
+   $.ajax({
+    type: 'GET',
+    url: '/likes/text'
+   }).done(function(response){
+      var textArray = response;
+
+      for(var i = 0; i < textArray.length; i++){
+        $('.content').append('<div class=' + 'post' + (i + 1) + '>');
+        for(var prop in textArray[i]){
+            $('.post' + (i + 1)).append('<div class=' + prop + '>' + textArray[i][prop] + '</div>');
+         }
+       }
+   });
 
 });
+

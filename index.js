@@ -47,8 +47,8 @@ app.get('/likes/photos', function(request, response){
         var photoPost = {};
         photoPost['blogName'] = allPosts[i].blog_name;
         photoPost['photoUrl'] = allPosts[i].photos[0].alt_sizes[1].url;
-      }
       photoPosts.push(photoPost);
+      }
     };
 
     response.render('pages/likes/photos', {posts: photoPosts});
@@ -70,11 +70,14 @@ app.get('/likes/text', function(request, response){
         textPost['blogName'] = allPosts[i].blog_name;
         textPost['text'] = allPosts[i].body;
 
+        if(allPosts[i]['title']){
+          textPost['title'] = allPosts[i].title;
+        }
+
         textPosts.push(textPost);
       }
     };
 
-    // console.log(textPosts);
     if(request.xhr){
       response.send(textPosts);
     } else {
@@ -104,11 +107,14 @@ app.get('/likes/quotes', function(request, response){
       }
     };
 
-    console.log(quotePosts);
-
     response.render('pages/likes/quotes', {posts: quotePosts})
   });
 });
+
+
+
+
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
