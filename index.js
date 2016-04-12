@@ -141,6 +141,30 @@ app.get('/likes/links', function(request, response){
   });
 });
 
+app.get('/likes/videos', function(request, response){
+  client.blogLikes('trubutstill', function(err, data){
+    var jsonString = JSON.stringify(data);
+    var obj = JSON.parse(jsonString);
+    var allPosts = obj.liked_posts;
+
+    var videoPosts = [];
+    for(var i = 0; i < allPosts.length; i++){
+      if(allPosts[i]['type'] === 'quote'){
+        var videoPost = {};
+        videoPost['blogName'] = allPosts[i].blog_name;
+        videoPost['caption'] = allPosts[i].caption;
+        videoPost['thumbnailUrl'] = allPosts[i].thumbnail_url;
+        videoPost['player'] = allPosts[i].player[0].embed_code;
+
+        videoPosts.push(videoPost);
+      }
+    };
+
+    console.log(videoPosts);
+
+    response.render('pages/likes/videos', {posts: videoPosts})
+  });
+});
 
 
 
