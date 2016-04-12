@@ -1,0 +1,14 @@
+  <% posts.forEach(function(post){ %>
+    <ul>
+         <li><%= post.blogName %></li>
+         <% if (post.linkImage) { %>
+            <a href="<%= post.url %>" target="_blank"><img src="<%= post.linkImage %>"></a>
+         <% } %>
+         <p><%= post.publisher %></p>
+         <h4><a href="<%= post.url %>" target="_blank"><%= post.title %></a></h4>
+         <p><%= post.excerpt %> </p>
+         <% if(post.linkAuthor != null) { %>
+            <p> By <%= post.linkAuthor %> </p>
+         <% } %>
+    </ul>
+  <% }); %>
