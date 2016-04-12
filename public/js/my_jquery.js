@@ -73,9 +73,9 @@ $(function(){
       var textArray = response;
 
       for(var i = 0; i < textArray.length; i++){
-        $('.content').append('<div class=' + 'post' + (i + 1) + '>');
+        $('.content').append('<div class=' + 'text-post' + (i + 1) + '>');
         for(var prop in textArray[i]){
-            $('.post' + (i + 1)).append('<div class=' + prop + '>' + textArray[i][prop] + '</div>');
+            $('.text-post' + (i + 1)).append('<div class=' + prop + '>' + textArray[i][prop] + '</div>');
          }
        }
    });
@@ -87,9 +87,9 @@ $(function(){
       var textArray = response;
 
       for(var i = 0; i < textArray.length; i++){
-        $('.content').append('<div class=' + 'post' + (i + 1) + '>');
+        $('.video-content').append('<div class=' + 'video-post' + (i + 1) + '>');
         for(var prop in textArray[i]){
-            $('.post' + (i + 1)).append('<div class=' + prop + '>' + textArray[i][prop] + '</div>');
+            $('.video-post' + (i + 1)).append('<div class=' + prop + '>' + textArray[i][prop] + '</div>');
          }
        }
    });

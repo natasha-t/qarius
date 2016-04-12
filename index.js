@@ -149,20 +149,23 @@ app.get('/likes/videos', function(request, response){
 
     var videoPosts = [];
     for(var i = 0; i < allPosts.length; i++){
-      if(allPosts[i]['type'] === 'quote'){
+      if(allPosts[i]['type'] === 'video'){
         var videoPost = {};
         videoPost['blogName'] = allPosts[i].blog_name;
         videoPost['caption'] = allPosts[i].caption;
-        videoPost['thumbnailUrl'] = allPosts[i].thumbnail_url;
+        // videoPost['thumbnailUrl'] = allPosts[i].thumbnail_url;
         videoPost['player'] = allPosts[i].player[0].embed_code;
 
         videoPosts.push(videoPost);
       }
     };
 
-    console.log(videoPosts);
+   if(request.xhr){
+      response.send(videoPosts);
+    } else {
+      response.render('pages/likes/videos', {posts: videoPosts});
+    }
 
-    response.render('pages/likes/videos', {posts: videoPosts})
   });
 });
 
