@@ -137,8 +137,6 @@ app.get('/likes/links', function(request, response){
       }
     };
 
-    console.log(linkPosts);
-
     response.render('pages/likes/links', {posts: linkPosts})
   });
 });
