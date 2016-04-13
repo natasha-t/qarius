@@ -5,6 +5,7 @@ var client = tumblr.createClient({
   token: '',
   token_secret: ''
 });
+var helpers = require('helpers');
 
 var express = require('express');
 var app = express();
