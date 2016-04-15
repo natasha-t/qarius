@@ -27,7 +27,9 @@ app.get('/', function(request, response) {
 
 
 app.get('/likes', function(request, response){
-  helpers.getAllPosts(client, 'trubutstill', response);
+  var allPosts = helpers.getPosts(client, 'trubutstill');
+
+  response.render('pages/likes/all_likes', {posts: allPosts});
 });
 
 app.get('/likes/photos', function(request, response){
