@@ -28,8 +28,10 @@ app.get('/', function(request, response) {
 
 app.get('/likes', function(request, response){
   var allPosts = helpers.getPosts(client, 'trubutstill');
-
-  response.render('pages/likes/all_likes', {posts: allPosts});
+  allPosts.then(function(data) {
+    console.log(data);
+    response.render('pages/likes/all_likes', { posts: data });
+  });
 });
 
 app.get('/likes/photos', function(request, response){
