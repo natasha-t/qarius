@@ -29,7 +29,6 @@ app.get('/', function(request, response) {
 app.get('/likes', function(request, response){
   var allPosts = helpers.getPosts(client, 'trubutstill');
   allPosts.then(function(data) {
-    console.log(data);
     response.render('pages/likes/all_likes', { posts: data });
   });
 });
@@ -40,17 +39,11 @@ app.get('/likes/photos', function(request, response){
     var obj = JSON.parse(jsonString);
     var allPosts = obj.liked_posts;
 
-    var photoPosts = [];
-    for(var i = 0; i < allPosts.length; i++){
-      if(allPosts[i]['type'] === 'photo'){
-        var photoPost = {};
-        photoPost['blogName'] = allPosts[i].blog_name;
-        photoPost['photoUrl'] = allPosts[i].photos[0].alt_sizes[1].url;
-      photoPosts.push(photoPost);
-      }
-    };
+   var posts = helpers.sortPosts(allPosts, function(post) { return post['type'] === 'photo'}, function(post){ return helpers.postCreator(post,'photo'); });
 
-    response.render('pages/likes/photos', {posts: photoPosts});
+    console.log(posts);
+
+    response.render('pages/likes/photos', {posts: posts});
   });
 });
 
@@ -62,20 +55,7 @@ app.get('/likes/text', function(request, response){
     var obj = JSON.parse(jsonString);
     var allPosts = obj.liked_posts;
 
-    var textPosts = [];
-    for(var i = 0; i < allPosts.length; i++){
-      if(allPosts[i]['type'] === 'text'){
-        var textPost = {};
-        textPost['blogName'] = allPosts[i].blog_name;
-        textPost['text'] = allPosts[i].body;
-
-        if(allPosts[i]['title']){
-          textPost['title'] = allPosts[i].title;
-        }
-
-        textPosts.push(textPost);
-      }
-    };
+    var textPosts = helpers.sortPosts(allPosts, function(post) { return post['type'] === 'text'}, function(post){ return helpers.postCreator(post,'text'); });
 
     if(request.xhr){
       response.send(textPosts);
