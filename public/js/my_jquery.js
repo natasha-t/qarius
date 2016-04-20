@@ -20,7 +20,7 @@ var myQuery = (function(){
   var DOM = (function(){
     return {
       append: function(element, content){
-        return selector.select(element).innerHTML = content;
+        return selector.select(element).innerHTML += content;
       }
     };
   })();
@@ -37,6 +37,7 @@ var myQuery = (function(){
          var promise = new Promise(function(resolve, error){
            var newReq = new XMLHttpRequest();
            newReq.open(ajaxRequest.type, ajaxRequest.url);
+           newReq.setRequestHeader("X-Requested-With", "XMLHttpRequest");
            newReq.send();
 
            newReq.onload = function() {

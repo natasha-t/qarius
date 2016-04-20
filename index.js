@@ -49,7 +49,10 @@ app.get('/likes/text', function(request, response){
   allPosts.then(function(data){
     var posts = helpers.sortPosts(data, function(post) { return post['type'] === 'text'}, function(post){ return helpers.postCreator(post,'text'); });
 
-    if(request.xhr){
+
+    console.log(posts);
+
+    if(request.headers['x-requested-with'] === 'XMLHttpRequest'){
       response.send(posts);
     } else {
       response.render('pages/likes/text', {posts: posts});
