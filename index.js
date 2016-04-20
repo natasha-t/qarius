@@ -25,154 +25,91 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+var allPosts = helpers.getPosts(client, 'trubutstill');
 
 app.get('/likes', function(request, response){
-  var allPosts = helpers.getPosts(client, 'trubutstill');
   allPosts.then(function(data) {
     response.render('pages/likes/all_likes', { posts: data });
   });
 });
 
 app.get('/likes/photos', function(request, response){
-  client.blogLikes('trubutstill', function(err, data){
-    var jsonString = JSON.stringify(data);
-    var obj = JSON.parse(jsonString);
-    var allPosts = obj.liked_posts;
-
-   var posts = helpers.sortPosts(allPosts, function(post) { return post['type'] === 'photo'}, function(post){ return helpers.postCreator(post,'photo'); });
-
-    console.log(posts);
-
+  allPosts.then(function(data){
+   var posts = helpers.sortPosts(data, function(post) { return post['type'] === 'photo'}, function(post){ return helpers.postCreator(post,'photo'); });
     response.render('pages/likes/photos', {posts: posts});
+  }).catch(function(err) {
+    console.error(err);
+    response.render('pages/index');
   });
+
 });
 
 
-
 app.get('/likes/text', function(request, response){
-  client.blogLikes('trubutstill', function(err, data){
-    var jsonString = JSON.stringify(data);
-    var obj = JSON.parse(jsonString);
-    var allPosts = obj.liked_posts;
-
-    var textPosts = helpers.sortPosts(allPosts, function(post) { return post['type'] === 'text'}, function(post){ return helpers.postCreator(post,'text'); });
+  allPosts.then(function(data){
+    var posts = helpers.sortPosts(data, function(post) { return post['type'] === 'text'}, function(post){ return helpers.postCreator(post,'text'); });
 
     if(request.xhr){
-      response.send(textPosts);
+      response.send(posts);
     } else {
-      response.render('pages/likes/text', {posts: textPosts});
+      response.render('pages/likes/text', {posts: posts});
     }
-
+  }).catch(function(err) {
+    console.error(err);
+    response.render('pages/index');
   });
 });
 
 app.get('/likes/quotes', function(request, response){
-  client.blogLikes('trubutstill', function(err, data){
-    var jsonString = JSON.stringify(data);
-    var obj = JSON.parse(jsonString);
-    var allPosts = obj.liked_posts;
+  allPosts.then(function(data){
+    var posts = helpers.sortPosts(data, function(post) { return post['type'] === 'quote'}, function(post){ return helpers.postCreator(post,'quote'); });
 
-
-
-    var quotePosts = [];
-    for(var i = 0; i < allPosts.length; i++){
-      if(allPosts[i]['type'] === 'quote'){
-        var quotePost = {};
-        quotePost['blogName'] = allPosts[i].blog_name;
-        quotePost['source'] = allPosts[i].source;
-        quotePost['text'] = allPosts[i].text;
-
-        quotePosts.push(quotePost);
-      }
-    };
-
-    response.render('pages/likes/quotes', {posts: quotePosts})
+    response.render('pages/likes/quotes', {posts: posts})
+  }).catch(function(err) {
+    console.error(err);
+    response.render('pages/index');
   });
 });
 
 
 app.get('/likes/links', function(request, response){
-  client.blogLikes('trubutstill', function(err, data){
-    var jsonString = JSON.stringify(data);
-    var obj = JSON.parse(jsonString);
-    var allPosts = obj.liked_posts;
+  allPosts.then(function(data){
+    var posts = helpers.sortPosts(data, function(post) { return post['type'] === 'link'}, function(post){ return helpers.postCreator(post,'link'); });
 
-    var linkPosts = [];
-    for(var i = 0; i < allPosts.length; i++){
-      if(allPosts[i]['type'] === 'link'){
-        var linkPost = {};
-        linkPost['blogName'] = allPosts[i].blog_name;
-        linkPost['publisher'] = allPosts[i].publisher;
-        linkPost['title'] = allPosts[i].title;
-        linkPost['url'] = allPosts[i].url;
-        linkPost['excerpt'] = allPosts[i].excerpt;
-        linkPost['linkAuthor'] = allPosts[i].link_author;
-
-      if(allPosts[i]['link_image']){
-        linkPost['linkImage'] = allPosts[i].link_image;
-      }
-
-        linkPosts.push(linkPost);
-      }
-    };
-
-    response.render('pages/likes/links', {posts: linkPosts})
+    response.render('pages/likes/links', {posts: posts})
+  }).catch(function(err) {
+    console.error(err);
+    response.render('pages/index');
   });
 });
 
 app.get('/likes/videos', function(request, response){
-  client.blogLikes('trubutstill', function(err, data){
-    var jsonString = JSON.stringify(data);
-    var obj = JSON.parse(jsonString);
-    var allPosts = obj.liked_posts;
+  allPosts.then(function(data){
+    var posts = helpers.sortPosts(data, function(post) { return post['type'] === 'video'}, function(post){ return helpers.postCreator(post,'video'); });
 
-    var videoPosts = [];
-    for(var i = 0; i < allPosts.length; i++){
-      if(allPosts[i]['type'] === 'video'){
-        var videoPost = {};
-        videoPost['blogName'] = allPosts[i].blog_name;
-        videoPost['caption'] = allPosts[i].caption;
-        // videoPost['thumbnailUrl'] = allPosts[i].thumbnail_url;
-        videoPost['player'] = allPosts[i].player[0].embed_code;
-
-        videoPosts.push(videoPost);
-      }
-    };
-
-   if(request.xhr){
-      response.send(videoPosts);
+    if(request.xhr){
+      response.send(posts);
     } else {
-      response.render('pages/likes/videos', {posts: videoPosts});
+      response.render('pages/likes/videos', {posts: posts});
     }
-
+  }).catch(function(err) {
+    console.error(err);
+    response.render('pages/index');
   });
 });
 
 app.get('/likes/audio', function(request, response){
-  client.blogLikes('trubutstill', function(err, data){
-    var jsonString = JSON.stringify(data);
-    var obj = JSON.parse(jsonString);
-    var allPosts = obj.liked_posts;
+  allPosts.then(function(data){
+    var posts = helpers.sortPosts(data, function(post) { return post['type'] === 'audio'}, function(post){ return helpers.postCreator(post,'audio'); });
 
-    var audioPosts = [];
-    for(var i = 0; i < allPosts.length; i++){
-      if(allPosts[i]['type'] === 'audio'){
-        var audioPost = {};
-        audioPost['blogName'] = allPosts[i].blog_name;
-        audioPost['player'] = allPosts[i].player;
-        audioPost['caption'] = allPosts[i].caption;
-
-        audioPosts.push(audioPost);
-      }
-    };
-
-
-   if(request.xhr){
-      response.send(audioPosts);
+    if(request.xhr){
+      response.send(posts);
     } else {
-      response.render('pages/likes/audio', {posts: audioPosts});
+      response.render('pages/likes/audio', {posts: posts});
     }
-
+  }).catch(function(err) {
+    console.error(err);
+    response.render('pages/index');
   });
 });
 
