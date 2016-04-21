@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }).then(function(response){
 
     var text = JSON.parse(response);
-    console.log(text);
 
     for(var i = 0; i < text.length; i++){
       myQuery.DOM.append('.text-content', '<div class=' + 'text-post' + (i + 1) + '>');
@@ -20,33 +19,41 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
 
-   $.ajax({
+   myQuery.ajax.request({
     type: 'GET',
     url: '/likes/videos'
-   }).done(function(response){
-      var textArray = response;
+    }).then(function(response){
 
-      for(var i = 0; i < textArray.length; i++){
-        $('.video-content').append('<div class=' + 'video-post' + (i + 1) + '>');
-        for(var prop in textArray[i]){
-            $('.video-post' + (i + 1)).append('<div class=' + prop + '>' + textArray[i][prop] + '</div>');
-         }
-       }
-   });
+      var videos = JSON.parse(response);
 
-   // $.ajax({
-   //  type: 'GET',
-   //  url: '/likes/audio'
-   // }).done(function(response){
-   //    var textArray = response;
+      for(var i = 0; i < videos.length; i++){
+        myQuery.DOM.append('.video-content', '<div class=' + 'video-post' + (i + 1) + '>');
+        for(var prop in videos[i]){
+          myQuery.DOM.append('.video-post' + (i + 1), '<div class=' + prop + '>' + videos[i][prop] + '</div>');
+        }
+      }
 
-   //    for(var i = 0; i < textArray.length; i++){
-   //      $('.audio-content').append('<div class=' + 'audio-post' + (i + 1) + '>');
-   //      for(var prop in textArray[i]){
-   //          $('.audio-post' + (i + 1)).append('<div class=' + prop + '>' + textArray[i][prop] + '</div>');
-   //       }
-   //     }
-   // });
+    }).catch(function(error){
+      console.log("there was an error");
+    });
+
+  myQuery.ajax.request({
+    type: 'GET',
+    url: '/likes/audio'
+    }).then(function(response){
+
+      var audio = JSON.parse(response);
+
+      for(var i = 0; i < audio.length; i++){
+        myQuery.DOM.append('.audio-content', '<div class=' + 'audio-post' + (i + 1) + '>');
+        for(var prop in audio[i]){
+          myQuery.DOM.append('.audio-post' + (i + 1), '<div class=' + prop + '>' + audio[i][prop] + '</div>');
+        }
+      }
+
+    }).catch(function(error){
+      console.log("there was an error");
+    });
 
 
 });
