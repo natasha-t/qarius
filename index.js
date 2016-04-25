@@ -25,7 +25,7 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-var allPosts = helpers.getPosts(client, 'whiskeydreamer');
+var allPosts = helpers.getPosts(client, 'trubutstill');
 
 app.get('/likes', function(request, response){
   allPosts.then(function(data) {
