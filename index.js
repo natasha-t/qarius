@@ -49,7 +49,8 @@ app.get('/likes/text', function(request, response){
   allPosts.then(function(data){
     var posts = helpers.sortPosts(data, function(post) { return post['type'] === 'text'}, function(post){ return helpers.postCreator(post,'text'); });
 
-    if(request.xhr){
+
+    if(request.headers['x-requested-with'] === 'XMLHttpRequest'){
       response.send(posts);
     } else {
       response.render('pages/likes/text', {posts: posts});
@@ -87,7 +88,7 @@ app.get('/likes/videos', function(request, response){
   allPosts.then(function(data){
     var posts = helpers.sortPosts(data, function(post) { return post['type'] === 'video'}, function(post){ return helpers.postCreator(post,'video'); });
 
-    if(request.xhr){
+    if(request.headers['x-requested-with'] === 'XMLHttpRequest'){
       response.send(posts);
     } else {
       response.render('pages/likes/videos', {posts: posts});
@@ -102,7 +103,7 @@ app.get('/likes/audio', function(request, response){
   allPosts.then(function(data){
     var posts = helpers.sortPosts(data, function(post) { return post['type'] === 'audio'}, function(post){ return helpers.postCreator(post,'audio'); });
 
-    if(request.xhr){
+    if(request.headers['x-requested-with'] === 'XMLHttpRequest'){
       response.send(posts);
     } else {
       response.render('pages/likes/audio', {posts: posts});
