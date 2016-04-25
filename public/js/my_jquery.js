@@ -48,15 +48,7 @@ var myQuery = (function(){
     };
   })();
 
-  var eventDispatch = (function(){
-    return {
-      click: function(element, action) {
-        return document.addEventListener('click', function(){
-          selector.select(element).
-        })
-      }
-    }
-  })();
+
 
 
   return {
