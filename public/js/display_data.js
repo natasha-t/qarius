@@ -9,9 +9,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     for(var i = 0; i < text.length; i++){
       myQuery.DOM.append('.text-content', '<div class=' + 'text-post' + (i + 1) + '>');
-      for(var prop in text[i]){
-        myQuery.DOM.append('.text-post' + (i + 1), '<div class=' + prop + '>' + text[i][prop] + '</div>');
-      }
+        for(var prop in text[i]){
+          if(text[i][prop] != null){
+            myQuery.DOM.append('.text-post' + (i + 1), '<div class=' + prop + '>' + text[i][prop] + '</div>');
+          }
+        }
     }
 
   }).catch(function(error){

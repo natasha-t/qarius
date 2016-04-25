@@ -25,12 +25,6 @@ var myQuery = (function(){
     };
   })();
 
-  // var eventDispatch = (function(){
-  //   return {
-  //     on:
-  //   };
-  // })();
-
   var ajax = (function(){
     return {
       request: function(ajaxRequest) {
@@ -54,16 +48,24 @@ var myQuery = (function(){
     };
   })();
 
+  var eventDispatch = (function(){
+    return {
+      click: function(element, action) {
+        return document.addEventListener('click', function(){
+          selector.select(element).
+        })
+      }
+    }
+  })();
+
 
   return {
     selector: selector,
     DOM: DOM,
-    // eventDispatch: eventDispatch,
     ajax: ajax
   };
 
 })();
-
 
 
 
