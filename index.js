@@ -27,6 +27,7 @@ app.get('/', function(request, response) {
 
 var allPosts = helpers.getPosts(client, 'trubutstill');
 
+
 app.get('/likes', function(request, response){
   allPosts.then(function(data) {
     response.render('pages/likes/all_likes', { posts: data });

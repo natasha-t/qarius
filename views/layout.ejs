@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
 </head>
 
 <body>
 
-  <% include partials/header.ejs %>
+  <div class="container">
 
-  <p><a href="/likes"> All Likes </a></p>
-  <p><a href="/likes/photos"> Photos </a></p>
-  <p><a href="/likes/text"> Text </a></p>
-  <p><a href="/likes/quotes"> Quotes </a></p>
-  <p><a href="/likes/links"> Links </a></p>
-  <p><a href="/likes/videos"> Videos </a></p>
-  <p><a href="/likes/audio"> Audio </a></p>
+    <% include partials/header.ejs %>
+
+    <p><a href="/likes"> All Likes </a></p>
+    <p><a href="/likes/photos"> Photos </a></p>
+    <p><a href="/likes/text"> Text </a></p>
+    <p><a href="/likes/quotes"> Quotes </a></p>
+    <p><a href="/likes/links"> Links </a></p>
+    <p><a href="/likes/videos"> Videos </a></p>
+    <p><a href="/likes/audio"> Audio </a></p>
 
 
 
 
-  <%- body %>
 
+    <%- body %>
+
+  </div>
 
   <script src="/js/display_data.js"></script>
   <script src="/js/my_jquery.js"></script>
