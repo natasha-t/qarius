@@ -7,23 +7,27 @@
 
 <body>
 
+  <div class="page-header">
+    <% include partials/header.ejs %>
+  </div>
+
   <div class="container">
 
-    <% include partials/header.ejs %>
-
-    <p><a href="/likes"> All Likes </a></p>
-    <p><a href="/likes/photos"> Photos </a></p>
-    <p><a href="/likes/text"> Text </a></p>
-    <p><a href="/likes/quotes"> Quotes </a></p>
-    <p><a href="/likes/links"> Links </a></p>
-    <p><a href="/likes/videos"> Videos </a></p>
-    <p><a href="/likes/audio"> Audio </a></p>
-
-
+    <nav class="row">
+      <div class="col-md-1"><a href="/likes"> All Likes </a></div>
+      <div class="col-md-1"><a href="/likes/photos"> Photos </a></div>
+      <div class="col-md-1"><a href="/likes/text"> Text </a></div>
+      <div class="col-md-1"><a href="/likes/quotes"> Quotes </a></div>
+      <div class="col-md-1"><a href="/likes/links"> Links </a></div>
+      <div class="col-md-1"><a href="/likes/videos"> Videos </a></div>
+      <div class="col-md-1"><a href="/likes/audio"> Audio </a></div>
+    </nav>
 
 
 
-    <%- body %>
+    <div class="row">
+      <%- body %>
+    </div>
 
   </div>
 

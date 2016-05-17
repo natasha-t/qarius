@@ -1,3 +1,10 @@
 h1 {
-  color: red;
+  color: #B8449D;
+  margin-left: 20px;
+}
+
+
+.col-md-1 {
+  padding: 10px;
+  border: 1px solid black;
 }
