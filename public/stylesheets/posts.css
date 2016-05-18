@@ -6,11 +6,23 @@
   border-radius: 7px;
 }
 
+
+.blogName {
+  color: black;
+  margin-top: 10px;
+}
+
+/*Photos*/
 .image {
   width: 630px;
 }
 
-.blogname {
-  color: black;
-  margin-top: 10px;
+/*Text*/
+
+.title {
+
+}
+
+.body {
+
 }

@@ -7,11 +7,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var text = JSON.parse(response);
 
+    console.log(text);
+
     for(var i = 0; i < text.length; i++){
-      myQuery.DOM.append('.text-content', '<div class=' + 'text-post' + (i + 1) + '>');
+      myQuery.DOM.append('.text-content', '<div class="post-wrapper' + ' ' + [i + 1] + ' ' + 'col-md-7"' + '>');
         for(var prop in text[i]){
           if(text[i][prop] != null){
-            myQuery.DOM.append('.text-post' + (i + 1), '<div class=' + prop + '>' + text[i][prop] + '</div>');
+            myQuery.DOM.append('.post-wrapper' + ' ' + [i + 1], '<div class=' + prop + '>' + text[i][prop] + '</div>');
           }
         }
     }
