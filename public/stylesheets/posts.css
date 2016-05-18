@@ -1,0 +1,16 @@
+.post-wrapper {
+  background-color: white;
+  padding-left: 26px;
+  margin-bottom: 25px;
+  padding-bottom: 50px;
+  border-radius: 7px;
+}
+
+.image {
+  width: 630px;
+}
+
+.blogname {
+  color: black;
+  margin-top: 10px;
+}
