@@ -1,16 +1,21 @@
 <h2> Links </h2>
 
   <% posts.forEach(function(post){ %>
-    <ul>
-         <li><%= post.blogName %></li>
+    <div class="post-wrapper col-md-7">
+         <div class="blogName-text">
+            <p class="blogName"><%= post.blogName %></p>
+         </div>
          <% if (post.linkImage) { %>
-            <a href="<%= post.url %>" target="_blank"><img src="<%= post.linkImage %>"></a>
+            <a href="<%= post.url %>" target="_blank"><img class="image" src="<%= post.linkImage %>"></a>
          <% } %>
-         <p><%= post.publisher %></p>
-         <h4><a href="<%= post.url %>" target="_blank"><%= post.title %></a></h4>
-         <p><%= post.excerpt %> </p>
-         <% if(post.linkAuthor != null) { %>
-            <p> By <%= post.linkAuthor %> </p>
-         <% } %>
-    </ul>
+
+         <div class="info-container">
+             <p><%= post.publisher %></p>
+             <h4><a href="<%= post.url %>" target="_blank"><%= post.title %></a></h4>
+             <p><%= post.excerpt %> </p>
+             <% if(post.linkAuthor != null) { %>
+                <p> By <%= post.linkAuthor %> </p>
+             <% } %>
+         </div>
+    </div>
   <% }); %>

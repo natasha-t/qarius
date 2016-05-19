@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+   <link rel="stylesheet" type="text/css" href="/stylesheets/posts.css" />
+   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
 
-  <% include partials/header.ejs %>
+  <div class="page-header">
+    <% include partials/header.ejs %>
+  </div>
 
-  <p><a href="/likes"> All Likes </a></p>
-  <p><a href="/likes/photos"> Photos </a></p>
-  <p><a href="/likes/text"> Text </a></p>
-  <p><a href="/likes/quotes"> Quotes </a></p>
-  <p><a href="/likes/links"> Links </a></p>
-  <p><a href="/likes/videos"> Videos </a></p>
-  <p><a href="/likes/audio"> Audio </a></p>
+  <div class="container">
 
+    <% include partials/nav.ejs %>
 
+    <div class="row">
+      <%- body %>
+    </div>
 
-
-  <%- body %>
-
+  </div>
 
   <script src="/js/display_data.js"></script>
   <script src="/js/my_jquery.js"></script>

@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
     var text = JSON.parse(response);
 
     for(var i = 0; i < text.length; i++){
-      myQuery.DOM.append('.text-content', '<div class=' + 'text-post' + (i + 1) + '>');
+      myQuery.DOM.append('.text-content', '<div class="post-wrapper' + ' ' + [i + 1] + ' ' + 'col-md-7"' + '>');
         for(var prop in text[i]){
           if(text[i][prop] != null){
-            myQuery.DOM.append('.text-post' + (i + 1), '<div class=' + prop + '>' + text[i][prop] + '</div>');
+            myQuery.DOM.append('.post-wrapper' + ' ' + [i + 1], '<div class=' + prop + '>' + text[i][prop] + '</div>');
           }
         }
     }
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var videos = JSON.parse(response);
 
       for(var i = 0; i < videos.length; i++){
-        myQuery.DOM.append('.video-content', '<div class=' + 'video-post' + (i + 1) + '>');
+        myQuery.DOM.append('.video-content', '<div class="post-wrapper' + ' ' +  'video-post' + (i + 1) + ' ' + 'col-md-7"' + '>');
         for(var prop in videos[i]){
           myQuery.DOM.append('.video-post' + (i + 1), '<div class=' + prop + '>' + videos[i][prop] + '</div>');
         }
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var audio = JSON.parse(response);
 
       for(var i = 0; i < audio.length; i++){
-        myQuery.DOM.append('.audio-content', '<div class=' + 'audio-post' + (i + 1) + '>');
+        myQuery.DOM.append('.audio-content', '<div class="post-wrapper' + ' ' + 'audio-post' + (i + 1) + ' ' + 'col-md-7"' + '>');
         for(var prop in audio[i]){
           myQuery.DOM.append('.audio-post' + (i + 1), '<div class=' + prop + '>' + audio[i][prop] + '</div>');
         }

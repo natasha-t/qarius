@@ -1,0 +1,59 @@
+.post-wrapper {
+  background-color: white;
+  padding-left: 29px;
+  margin-bottom: 25px;
+  padding-bottom: 50px;
+  border-radius: 7px;
+}
+
+
+.blogName {
+  color: black;
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+
+/*Photos*/
+.image {
+  width: 98%;
+}
+
+/*Text*/
+
+.title {
+  margin-top: 5px;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 47px;
+
+}
+
+.body {
+  margin-top: 15px;
+}
+
+/*Quotes*/
+
+.source {
+  padding-top: 10px;
+}
+
+/*Links*/
+
+.info-container {
+  width: 98%;
+  padding: 20px 20px 0;
+  overflow: hidden;
+  background-color: #EDEDED;
+}
+
+/*Videos*/
+
+.caption {
+  padding-top: 15px;
+}
+
+.player {
+  width: 98%;
+}
+
