@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var text = JSON.parse(response);
 
-    console.log(text);
-
     for(var i = 0; i < text.length; i++){
       myQuery.DOM.append('.text-content', '<div class="post-wrapper' + ' ' + [i + 1] + ' ' + 'col-md-7"' + '>');
         for(var prop in text[i]){
@@ -31,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var videos = JSON.parse(response);
 
       for(var i = 0; i < videos.length; i++){
-        myQuery.DOM.append('.video-content', '<div class=' + 'video-post' + (i + 1) + '>');
+        myQuery.DOM.append('.video-content', '<div class="post-wrapper' + ' ' +  'video-post' + (i + 1) + ' ' + 'col-md-7"' + '>');
         for(var prop in videos[i]){
           myQuery.DOM.append('.video-post' + (i + 1), '<div class=' + prop + '>' + videos[i][prop] + '</div>');
         }
