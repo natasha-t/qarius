@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var audio = JSON.parse(response);
 
       for(var i = 0; i < audio.length; i++){
-        myQuery.DOM.append('.audio-content', '<div class=' + 'audio-post' + (i + 1) + '>');
+        myQuery.DOM.append('.audio-content', '<div class="post-wrapper' + ' ' + 'audio-post' + (i + 1) + ' ' + 'col-md-7"' + '>');
         for(var prop in audio[i]){
           myQuery.DOM.append('.audio-post' + (i + 1), '<div class=' + prop + '>' + audio[i][prop] + '</div>');
         }

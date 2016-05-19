@@ -1,6 +1,6 @@
 .post-wrapper {
   background-color: white;
-  padding-left: 26px;
+  padding-left: 29px;
   margin-bottom: 25px;
   padding-bottom: 50px;
   border-radius: 7px;
@@ -49,3 +49,10 @@
 
 /*Videos*/
 
+.caption {
+  padding-top: 15px;
+}
+
+.player {
+  width: 98%;
+}
