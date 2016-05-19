@@ -36,3 +36,12 @@
 .source {
   padding-top: 10px;
 }
+
+/*Links*/
+
+.info-container {
+  width: 98%;
+  padding: 20px 20px 0;
+  overflow: hidden;
+  background-color: #EDEDED;
+}
