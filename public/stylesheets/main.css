@@ -34,6 +34,17 @@ h2 {
   margin-left: 10px;
 }
 
+.nav-icon {
+  max-width: 100%;
+  height: auto;
+}
+
+.nav-icon-cont {
+  color: black;
+ max-width: 100%;
+ height: auto;
+}
+
 /*.avatar {
   display: inline-block;
   width: 50px;
@@ -41,7 +52,7 @@ h2 {
 }*/
 
 
-.col-md-1 {
+.col-xs-1 {
   background-color: white;
   padding-top: 25px;
   padding-bottom: 13px;
@@ -56,13 +67,13 @@ h2 {
   margin-left: 30px;
 }*/
 
-.col-md-1:nth-of-type(1) {
+.col-xs-1:nth-of-type(1) {
   border-left: 1px solid white;
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
 }
 
-.col-md-1:nth-of-type(7) {
+.col-xs-1:nth-of-type(7) {
   border-right: 1px solid white;
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
