@@ -34,6 +34,17 @@ h2 {
   margin-left: 10px;
 }
 
+.nav-icon {
+  max-width: 100%;
+  height: auto;
+}
+
+.nav-icon-cont {
+  color: black;
+ max-width: 100%;
+ height: auto;
+}
+
 /*.avatar {
   display: inline-block;
   width: 50px;
